@@ -1,0 +1,51 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* height: 100vh; */
+    margin-top: 10px;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.card {
+    /* background-color: #fff; */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 300px;
+    text-align: center;
+}
+
+.album-cover {
+    margin-top: 20px;
+    width: 80%;
+    height: auto;
+}
+
+.card-content {
+    padding: 15px;
+}
+
+.track-name {
+    font-size: 1.2em;
+    margin: 10px 0 5px;
+}
+
+.artist-name {
+    color: #555;
+    margin: 0 0 5px;
+}
+
+.popularity {
+    color: #888;
+    font-size: 0.9em;
+    /* margin: 0; */
+} 

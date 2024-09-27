@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Tracks</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='top_tracks.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.2/color-thief.umd.js"></script>
+</head>
+<body>
+    <div class="card-container">
+        {% for track_name, artist_name, album_cover, popularity in top_info %}
+        <div class="card">
+            <img src="{{ album_cover }}" alt="Album cover" class="album-cover" onload="setCardBackgroundColor(this)" crossorigin="anonymous">
+            <div class="card-content">
+                <h3 class="track-name">{{ track_name }}</h3>
+                <p class="artist-name">{{ artist_name }}</p>
+                <p class="popularity">Popularity: {{ popularity }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <script>
+        // function setCardBackgroundColor(imgElement) {
+        //     const colorThief = new ColorThief();
+        //     const cardElement = imgElement.closest('.card');
+        //     const cardContent = cardElement.querySelector('.card-content');
+        //     if (imgElement.complete) {
+        //         const color = colorThief.getColor(imgElement);
+        //         // cardContent.style.backgroundColor = `rgba(${color[0]}, ${color[1]}, ${color[2]}, 0.5)`;
+        //         cardElement.style.backgroundColor = `rgb(${color[0]}, ${color[1]}, ${color[2]})`;
+        //     } else {
+        //         imgElement.addEventListener('load', function() {
+        //             const color = colorThief.getColor(imgElement);
+        //             // cardContent.style.backgroundColor = `rgba(${color[0]}, ${color[1]}, ${color[2]}, 0.5)`;
+        //             cardElement.style.backgroundColor = `rgb(${color[0]}, ${color[1]}, ${color[2]})`;
+        //         });
+        //     }
+        // }
+    </script>
+
+    <!-- changes text colour too -->
+    <script>
+        function setCardBackgroundColor(imgElement) {
+            const colorThief = new ColorThief();
+            const cardElement = imgElement.closest('.card');
+            const cardContent = cardElement.querySelector('.card-content');
+            const card_artist = cardElement.querySelector('.artist-name');
+            const card_pop = cardElement.querySelector('.popularity');
+
+            if (imgElement.complete) {
+                const color = colorThief.getColor(imgElement);
+                const [r, g, b] = color;
+                //Calculate luminance; 
+                const luminance = 0.2126 * r + 0.7152 * g + 0.0722 * b; 
+
+                // Set the background color
+                cardContent.style.backgroundColor = `rgba(${r}, ${g}, ${b}, 0.5)`;
+
+                // Set text color based on background brightness
+                cardContent.style.color = luminance < 128 ? '#bfc3c9' : 'black'; // Choose text color based on luminance
+                card_artist.style.color = luminance < 128 ? '#bfc3c9' : 'black';
+                card_pop.style.color = luminance < 128 ? '#bfc3c9' : 'black';
+                // Optional: set the card's background as well
+                cardElement.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+            } else {
+                imgElement.addEventListener('load', function() {
+                    const color = colorThief.getColor(imgElement);
+                    const [r, g, b] = color;
+                    const luminance = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+
+                    // Set the background color
+                    cardContent.style.backgroundColor = `rgba(${r}, ${g}, ${b}, 0.5)`;
+
+                    // Set text color based on background brightness
+                    cardContent.style.color = luminance < 128 ? '#bfc3c9' : 'black';
+                    card_artist.style.color = luminance < 128 ? '#bfc3c9' : 'black';
+                    card_pop.style.color = luminance < 128 ? '#bfc3c9' : 'black';
+
+                    // Optional: set the card's background as well
+                    cardElement.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+                });
+            }
+        }
+
+    </script>
+</body>
+</html>
