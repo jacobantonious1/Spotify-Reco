@@ -88,16 +88,11 @@ def make_reco_playlist():
 
     # get recommended
     # Spotify can only take in 5 seed tracks in one request
-    recommendations = sp.recommendations(
-        seed_tracks=seed_tracks[:5], 
-        seed_genres=genre, 
-        target_energy = energy,
-        target_dancibility = dance,
-        limit=50
-    )
+    recommendations = sp.recommendations(seed_tracks=seed_tracks[:5], limit=20)
+
     # Create new playlist
     user_id = sp.current_user()['id']
-    playlist = sp.user_playlist_create(user_id, 'Personalized Recommended Playlist', public=True) #add name and state
+    playlist = sp.user_playlist_create(user_id, 'Personalized Recommended Playlist2', public=True) #add name and state
     
     # Add recommended to playlist
     track_ids = [track['id'] for track in recommendations['tracks']]
