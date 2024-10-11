@@ -32,7 +32,7 @@ sp = Spotify(auth_manager=sp_oauth, requests_timeout=15)
 
 @app.route('/')
 def home():
-    return render_template('home.html');  
+    return render_template('index.html');  
 
 @app.route('/login')
 def login():
