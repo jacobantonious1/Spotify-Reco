@@ -73,7 +73,14 @@ h1, .login-button, .description {
     padding-block-end: var(--encore-spacing-tighter-2, 8px);
     padding-inline-start: var(--encore-spacing-looser-2, 32px);
     padding-inline-end: var(--encore-spacing-looser-2, 32px);
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
     margin-top: 3dvh;
+}
+
+.login-button:hover {
+    background-color: #17c153;
 }
 
 .get_container{
