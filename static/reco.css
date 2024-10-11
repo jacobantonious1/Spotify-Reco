@@ -1,0 +1,127 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    background-color: #000; /* Dark background similar to Spotify */
+}
+
+/* Style the backdrop similar to the previous page */
+.backdrop-filter {
+    position: absolute;
+    inset: 0;
+    z-index: -10;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background: radial-gradient(125% 125% at 50% 10%, #000 47%, #1DB954 80%);
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+h1 {
+    color: aliceblue;
+    margin-bottom: 3dvh;
+    font-size: 2rem;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2dvh;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1dvh;
+    max-width: 400px;
+    width: 100%;
+}
+
+.input-group label {
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+}
+
+.input-group input[type="text"] {
+    width: 100%;
+    max-width: 300px;
+    padding: 12px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    background-color: transparent;
+    color: white;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.input-group input[type="text"]:focus {
+    border-color: #00FF00;
+    outline: none;
+}
+
+.input-group select {
+    width: 100%;
+    max-width: 300px;
+    padding: 12px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    background-color: transparent;
+    color: white;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.input-group select:focus {
+    border-color: #00FF00;
+    outline: none;
+}
+
+.login-button {
+    display: flex;
+    justify-content: center;
+    background-color: #1ed760;
+    box-sizing: border-box;
+    border: none;
+    -webkit-tap-highlight-color: transparent;
+    position: relative;
+    color: var(--text-base, #000000);
+    display: flex;
+    border-radius: var(--encore-button-corner-radius, 9999px);
+    font-size: inherit;
+    min-block-size: var(--encore-control-size-base, 48px);
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    padding-block-start: var(--encore-spacing-tighter-2, 8px);
+    padding-block-end: var(--encore-spacing-tighter-2, 8px);
+    padding-inline-start: var(--encore-spacing-looser-2, 32px);
+    padding-inline-end: var(--encore-spacing-looser-2, 32px);
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+    background-color: #17c153;
+}
+

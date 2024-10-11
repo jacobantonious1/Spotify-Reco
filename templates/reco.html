@@ -1,63 +1,50 @@
 <!DOCTYPE html>
-<html> 
-    <head>
-        <title>
-            Welcome to reco
-        </title>
-        <link rel = "stylesheet" href = "{{ url_for('static', filename='reco.css')}}">
-    </head>
-    <body>
-        <h1 class = "center">how would you like to customize your playlist?</h1>
+<html>
+<head>
+    <title>Welcome to reco</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='reco.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body class="backdrop-filter">
+    <div class="backdrop-filter">
+        <div class="center">
+            <h1 style = "margin-top: 14dvh; margin-bottom: 2dvh;">How would you like to customize your playlist?</h1>
+        </div>
+        <br>
 
         <form action="{{ url_for('make_reco_playlist') }}" method="post">
-            <div class="center">
-                <label for="energy">Energy:</label>
-                <input type="range" id="energy" name="energy" min="0" max="1" step="0.1">
+
+            <div class="form-container">
+
+                <div class="input-group">
+                    <label for="play_name">Name for Playlist</label>
+                    <input type="text" id="play_name" name="play_name" placeholder="Give Reco a name for your Playlist">
+                </div>
+
+                <div class="input-group">
+                    <label for="play_num">How many songs would you like in your playlist?</label>
+                    <select id="play_num" name="play_num">
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="25">25</option>
+                        <option value="50">50</option>
+                        <option value="75">75</option>
+                        <option value="100">100</option>
+                    </select>
+                </div>
+                <br>
             </div>
+
             <div class="center">
-                <label for="danceability">Danceability:</label>
-                <input type="range" id="danceability" name="danceability" min="0" max="1" step="0.1">
+                <button type="submit" class="login-button" style = "margin-bottom: 2dvh;">Make a reco playlist</button>
             </div>
-            <!-- <div class="center">
-                <label for="valence">Valence:</label>
-                <input type="range" id="valence" name="valence" min="0" max="1" step="0.1">
-            </div>
+
+        </form>
+        <form action="{{ '/' }}">
             <div class="center">
-                <label for="tempo">Tempo (BPM):</label>
-                <input type="number" id="tempo" name="tempo" min="0" max="300">
-            </div> -->
-            <div class="center">
-                <label for="genre">Genre:</label>
-                <select name="genre" id="genre">
-                    <option value=""></option>
-                    <option value="pop">Pop</option>
-                    <option value="rock">Rock</option>
-                    <option value="hip-hop">Hip-Hop</option>
-                    <option value="jazz">Jazz</option>
-                    <option value="classical">Classical</option>
-                    <option value="electronic">Electronic</option>
-                    <option value="country">Country</option>
-                    <option value="blues">Blues</option>
-                    <option value="reggae">Reggae</option>
-                    <option value="metal">Metal</option>
-                    <option value="folk">Folk</option>
-                    <option value="soul">Soul</option>
-                    <option value="punk">Punk</option>
-                    <option value="rnb">R&B</option>
-                    <option value="latin">Latin</option>
-                    <option value="k-pop">K-Pop</option>
-                    <option value="indie">Indie</option>
-                    <option value="alternative">Alternative</option>
-                    <option value="dance">Dance</option>
-                    <option value="ambient">Ambient</option>
-                </select>                  
-                <!-- <input type="text" id="genre" name="genre"> -->
-            </div>
-            <!-- Add more customization options as needed -->
-            <div class="center">
-                <button type="submit" class="login-button">Make a reco playlist</button>
+                <button type="submit" class="login-button">Go Home</button>
             </div>
         </form>
-    </body>
+    </div>
+</body>
 </html>
-

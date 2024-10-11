@@ -5,6 +5,7 @@
             Welcome to reco
         </title>
         <link rel = "stylesheet" href = "{{ url_for('static', filename='home.css')}}">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
     </head>
     <body class = "backdrop-filter">
         <div class = "backdrop-filter">
@@ -12,49 +13,42 @@
 
                 <h1 class = "center" style = "color: aliceblue; margin-top: 17dvh; margin-bottom: 3dvh;">Welcome to Spotify Reco</h1>
 
-                {%if session.logged_in %}
+                {% if session.logged_in %}
                 <div>
-                    <div class = "get_container">
-                        <form action = '{{url_for("get_playlist")}}'>
-                            <div class = "center">
-                                <button type = 'submit' class = "login-button">View Playlist</button>
-                            </div>
-                        </form>
-
-                        <!-- Get recommended playlist -->
-                        <form action = '{{url_for("go_to_reco_play")}}'>
-                            <div class = "center">
-                                <button type = 'submit' class = "login-button">Make a reco playlist</button>
-                            </div>
-                        </form>
-
-                        <!-- top tracks -->
-                        <form action = '{{url_for("get_toptracks")}}'>
-                            <div class = "center">
-                                <button type = 'submit' class = "login-button">View top tracks</button>
-                            </div>
-                        </form>
-                    </div>
-
-                    <form action = "{{url_for('logout')}}" method = 'GET'>
+                    <!-- Get recommended playlist -->
+                    <form action="{{ url_for('go_to_reco_play') }}">
                         <div class="center">
-                            <button type = 'submit' class = 'login-button log-out'>Log Out</button>
+                            <button type="submit" class="login-button">Make a reco playlist</button>
+                        </div>
+                    </form>
+                    
+                    <!-- top tracks -->
+                    <form action="{{ url_for('get_toptracks') }}">
+                        <div class="center">
+                            <button type="submit" class="login-button">View top tracks</button>
+                        </div>
+                    </form>
+
+                    <!-- logout -->
+                    <form action="{{ url_for('logout') }}" method="GET">
+                        <div class="center">
+                            <button type="submit" class="login-button log-out">Log Out</button>
                         </div>
                     </form>
                 </div>
                 {% else %}
-                <p class = "center description" style = "color: aliceblue;">
+                <p class="center description" style="color: aliceblue;">
                     Hi! This is my Spotify application. In here you'll be able to view your top tracks, 
                     <br>
-                    and artits, as well as make recommended playlists based on your listens!
+                    and artists, as well as make recommended playlists based on your listens!
                 </p>
 
-                <form action = "{{url_for('login')}}" method = 'GET'>
-                    <div class = "center">
-                        <button type = 'submit' class = 'login-button'>Log In</button>
+                <form action="{{ url_for('login') }}" method="GET">
+                    <div class="center">
+                        <button type="submit" class="login-button">Log In</button>
                     </div>
                 </form>
-                {%endif%}
+                {% endif %}
             </div>
         </div>
     </body>
