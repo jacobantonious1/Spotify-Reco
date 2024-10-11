@@ -22,9 +22,6 @@ h1, .login-button, .description {
 }
 
 .title{
-    color: white; 
-    margin-top: 17dvh; 
-    margin-bottom: 3dvh
 }
 
 .backdrop-filter {
@@ -100,7 +97,7 @@ h1, .login-button, .description {
 }
 
 @media (max-width: 480px) {
-    .title{
+    h1{
         font-size: 25px;
     }
 
