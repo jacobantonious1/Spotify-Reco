@@ -4,6 +4,7 @@
     <title>Welcome to reco</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='reco.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body class="backdrop-filter">
     <div class="backdrop-filter">
@@ -18,7 +19,7 @@
 
                 <div class="input-group">
                     <label for="play_name">Name for Playlist</label>
-                    <input type="text" id="play_name" name="play_name" placeholder="Give Reco a name for your Playlist">
+                    <input type="text" id="play_name" name="play_name" placeholder="Give Reco a name for your Playlist" autocomplete="off">
                 </div>
 
                 <div class="input-group">

@@ -15,7 +15,8 @@ load_dotenv()
 
 client_id = os.getenv("CLIENT_ID")
 client_secret = os.getenv("CLIENT_SECRET")
-redirect_url = 'http://127.0.0.1:5000/callback'
+redirect_url = 'https://try4-brown.vercel.app/callback'
+# redirect_url = 'http://127.0.0.1:5000/callback'
 scope = 'playlist-modify-public playlist-modify-private user-library-read playlist-read-private user-read-private user-read-email user-top-read'
 
 cache_handler = FlaskSessionCacheHandler(session)
@@ -66,10 +67,17 @@ def get_toptracks():
         auth_url = sp_oauth.get_authorize_url()
         return redirect(auth_url)
     
-    top_tracks = sp.current_user_top_tracks(limit=50)
-    top_info = [(track['name'], track['artists'][0]['name'], track['album']['images'][0]['url'], track['popularity']) for track in top_tracks['items']]
+    try:
+        top_tracks = sp.current_user_top_tracks(limit=50)
+        top_info = [
+            (track['name'], track['artists'][0]['name'], track['album']['images'][0]['url'], track['popularity']) 
+            for track in top_tracks['items']
+        ]
+        return render_template('top_tracks.html', top_info=top_info, error=None)
     
-    return render_template('top_tracks.html', top_info = top_info)
+    except Exception as e:
+        print(f"Error fetching top tracks: {e}")  # Log the error for debugging
+        return render_template('top_tracks.html', top_info=None, error="Could not load top tracks. Please try again later.")
 
 @app.route('/go_to_reco_play')
 def go_to_reco_play():
@@ -77,9 +85,8 @@ def go_to_reco_play():
 
 @app.route('/make_reco_playlist', methods = ['POST'])
 def make_reco_playlist():
-    # get energy, dancibility and genre from html
     play_name =request.form.get('play_name')
-    privacy = request.form.get('privacy') == 'True'
+    # privacy = request.form.get('privacy') == 'True'
     play_num = request.form.get('play_num')
 
 
@@ -89,8 +96,6 @@ def make_reco_playlist():
 
     # get recommended
     # Spotify can only take in 5 seed tracks in one request
-    print(f"Play name: {play_name} Play NUm: {play_num} privacy: {privacy}")
-
     recommendations = sp.recommendations(
         seed_tracks=seed_tracks[:5],  # Seed tracks
         limit=play_num

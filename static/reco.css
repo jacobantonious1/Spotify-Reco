@@ -84,7 +84,7 @@ h1 {
     padding: 12px;
     border: 2px solid #ccc;
     border-radius: 8px;
-    background-color: transparent;
+    background-color: black;
     color: white;
     font-size: 16px;
     transition: border-color 0.3s;
@@ -123,5 +123,27 @@ h1 {
 
 .login-button:hover {
     background-color: #17c153;
+}
+
+@media (max-width: 480px) {
+    h1{
+        font-size: 20px;
+        text-align: center;
+    }
+
+    /* .description {
+        margin-left: 15px;
+        margin-right: 15px;
+        font-size: 1rem; 
+    } */
+
+    .login-button {
+        padding: 14px 26px;
+        font-size: 1.1rem; 
+    }
+
+    .backdrop-filter {
+        background: radial-gradient(125% 125% at 50% 15%, #000 55%, #1DB954 80%);
+    }
 }
 

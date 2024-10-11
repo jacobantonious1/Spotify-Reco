@@ -8,18 +8,33 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.2/color-thief.umd.js"></script>
 </head>
 <body>
-    <div class="card-container">
-        {% for track_name, artist_name, album_cover, popularity in top_info %}
-        <div class="card">
-            <img src="{{ album_cover }}" alt="Album cover" class="album-cover" onload="setCardBackgroundColor(this)" crossorigin="anonymous">
-            <div class="card-content">
-                <h3 class="track-name">{{ track_name }}</h3>
-                <p class="artist-name">{{ artist_name }}</p>
-                <p class="popularity">Popularity: {{ popularity }}</p>
+    <div id="loading">Loading top tracks...</div>
+    <div class="card-container" style = "display: none;">
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% else %}
+            {% for track_name, artist_name, album_cover, popularity in top_info %}
+            <div class="card">
+                <img src="{{ album_cover }}" alt="Album cover" class="album-cover" onload="setCardBackgroundColor(this)" crossorigin="anonymous">
+                <div class="card-content">
+                    <h3 class="track-name">{{ track_name }}</h3>
+                    <p class="artist-name">{{ artist_name }}</p>
+                    <p class="popularity">Popularity: {{ popularity }}</p>
+                </div>
             </div>
-        </div>
-        {% endfor %}
+            {% endfor %}
+        {% endif %}
     </div>
+
+    <script>
+        // Show the cards after a short delay
+        window.onload = function() {
+            setTimeout(function() {
+                document.getElementById('loading').style.display = 'none';
+                document.querySelector('.card-container').style.display = 'flex';
+            }, 2000);
+        };
+    </script>
 
     <script>
         // function setCardBackgroundColor(imgElement) {

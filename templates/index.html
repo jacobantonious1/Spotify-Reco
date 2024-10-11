@@ -6,15 +6,16 @@
         </title>
         <link rel = "stylesheet" href = "{{ url_for('static', filename='home.css')}}">
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body class = "backdrop-filter">
         <div class = "backdrop-filter">
             <div style = 'text-align: center; '>
 
-                <h1 class = "center" style = "color: aliceblue; margin-top: 17dvh; margin-bottom: 3dvh;">Welcome to Spotify Reco</h1>
+                <h1 class = "center title">Welcome to Spotify Reco</h1>
 
                 {% if session.logged_in %}
-                <div>
+                <div class = "button-container">
                     <!-- Get recommended playlist -->
                     <form action="{{ url_for('go_to_reco_play') }}">
                         <div class="center">

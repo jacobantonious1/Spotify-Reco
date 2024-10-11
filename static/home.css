@@ -12,13 +12,19 @@ html, body {
 }
 
 body{
-    width: 70dvw;
+    width: 90vw;
     overflow: hidden;
     font-family: 'Inter', sans-serif;
 }
 
 h1, .login-button, .description {
     font-family: 'Inter', sans-serif;
+}
+
+.title{
+    color: white; 
+    margin-top: 17dvh; 
+    margin-bottom: 3dvh
 }
 
 .backdrop-filter {
@@ -39,8 +45,7 @@ h1, .login-button, .description {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 2dvh; /* Space between buttons */
-    margin-top: 3dvh; /* Space above the container */
+    margin-top: 10px; /* Space above the container */
 }
 
 .center{
@@ -76,7 +81,7 @@ h1, .login-button, .description {
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    margin-top: 3dvh;
+    margin-top: 20px;
 }
 
 .login-button:hover {
@@ -87,9 +92,34 @@ h1, .login-button, .description {
     display:flex;
     justify-content: space-around;
     margin-top: 10px;
-    width: 40dvw;
+    width: 60vw;
 }
 
 .log-out{
-    margin-top: 3dvh;
+    margin-top: 20px;
+}
+
+@media (max-width: 480px) {
+    .title{
+        font-size: 25px;
+    }
+
+    .description {
+        margin-left: 15px;
+        margin-right: 15px;
+        font-size: 1rem; 
+    }
+
+    .login-button {
+        padding: 14px 26px;
+        font-size: 1.1rem; 
+    }
+
+    .button-container{
+        margin-top: 50px;
+    }
+
+    .backdrop-filter {
+        background: radial-gradient(125% 125% at 50% 15%, #000 55%, #1DB954 80%);
+    }
 }
